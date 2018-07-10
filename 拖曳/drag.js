@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-06-04 16:35:26
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-06-05 18:19:22
+* @Last Modified time: 2018-06-06 10:23:12
 */
 
 'use strict';
@@ -14,26 +14,53 @@ var log = document.getElementById('login-log'),
     lis=stateList.getElementsByTagName('li'),
     stateTxt=document.getElementById('login2qq_state_txt'),
     loginStateShow=document.getElementById('loginStateShow');
+function getByClass(clsName,parent){
+    var oParent = parent?document.getElementById(parent) : document,
+        eles = [],
+        elements = oParent.getElementsByTagName('*');
+        for(let i=0;i<elements.length;i++){
+            if(elements[i].className == clsName){
+                eles.push(elements[i]);
+            }
+        }
+        return eles;
+}
 window.onload = drag();
 function drag(){
     panel.onmousedown = fndown;
     close.onclick =closed;
     loginState.onclick =  function(event){
         var e = event || window.event;
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble = true;
+        }
         stateList.style.display = 'block';
     }
-    for (var i = 0; i < lis.length; i++) {
-        lis[i].onmousemove = function(){
-            this.style.backgroud = "red"
-            this.style.color = "red"
+    for(let i=0;i<lis.length;i++){
+        lis[i].onmouseover = function(){
+            this.style.background = '#567';
         }
         lis[i].onmouseout = function(){
-            this.style.backgroud = "#eee"
-            this.style.color = "black"
+            this.style.background = "#eee"
         }
-        lis[i].onclick = function() {
-            stateList.style.display = "none"
+        lis[i].onclick = function(e){
+            var id = this.id,
+                e = e || window.event;
+            if(e.stopPropagation){
+                e.stopPropagation();
+            }else{
+                e.cancelBubble = true;
+            }
+            stateList.style.display = 'none';
+            stateTxt.innerHTML = getByClass('stateSelect_text',id)[0].innerHTML;
+            loginStateShow.className = "";
+            loginStateShow.className = 'login-state-show ' + id;
         }
+    }
+    document.onclick = function(){
+        stateList.style.display = 'none';
     }
 }
 function closed(){
