@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>isXML</title>
+</head>
+<body>
+    <div id='text'>isXML</div>
+    <!--这是一个注释节点-->
+    <script >
+        var isXML = function(elem){
+            var document = elem && (elem.ownerDocument || elem).document;
+            console.log(elem.ownerElement);
+            console.log(elem.ownerDocument);
+            return  document ? document.nodeType != HTML :false
+        }
+        console.log(isXML(document.getElementById('text')));
+    </script>
+</body>
+</html>

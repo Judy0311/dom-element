@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <!--整个登陆窗口-->
+    <div id='login-panel'>
+        <!--登陆窗口的关闭图标-->
+        <div id='login-close'>
+            <span id='close'>
+                <img src='../images/close.jpg'/>
+            </span>
+        </div>
+        <!--登陆的log,也就是可以随鼠标拖拽的区域-->
+        <div id='login-log'>
+            <img  src='../images/log.jpg'/>
+        </div>
+        <!--登陆表单-->
+        <div class='login-mes'>
+            <form action='login-form'>
+                <div class='form-item'>
+                    <span>账 号：</span>
+                    <input placeholder="请输入账号" id="login-num" name='name' type='text'></input>
+                </div>
+                <div class='form-item'>
+                    <span>密 码：</span>
+                    <input placeholder="请输入密码" id='login-password' name='name' type='password'/>
+            </form>
+        </div>
+        <!--状态选择-->
+        <div class="bottomDiv">
+            <div class="btn"></div>
+            <div>
+                <div id="loginState" class="login-state-trigger login-state-trigger2 login-state" title="选择在线状态">
+                    <div id="loginStateShow" class="login-state-show online">状态</div>
+                    <div class="login-state-down">下</div>
+                    <div class="login-state-txt" id="login2qq_state_txt">在线</div>
+                    <ul id="loginStatePanel" class="statePanel login-state" style="display: none">
+                        <li id="online" class="statePanel_li">
+                            <div class="stateSelect_icon online"></div>
+                            <div class="stateSelect_text">我在线上</div>
+                        </li>
+                        <li id="callme" class="statePanel_li">
+                            <div class="stateSelect_icon callme"></div>
+                            <div class="stateSelect_text">Q我吧</div>
+                        </li>
+                        <li id="away" class="statePanel_li">
+                            <div class="stateSelect_icon away"></div>
+                            <div class="stateSelect_text">离开</div>
+                        </li>
+                        <li id="busy" class="statePanel_li">
+                            <div class="stateSelect_icon busy"></div>
+                            <div class="stateSelect_text">忙碌</div>
+                        </li>
+                        <li id="silent" class="statePanel_li">
+                            <div class="stateSelect_icon silent"></div>
+                            <div class="stateSelect_text">请勿打扰</div>
+                        </li>
+                        <li id="hidden" class="statePanel_li">
+                            <div class="stateSelect_icon hidden"></div>
+                            <div class="stateSelect_text">隐身</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #login-panel{
+            width:400px;
+            height:300px;
+            background:#eee;
+            border:1px solid #ccc;
+            position:absolute;
+            top:35%;
+            left:35%;
+        }
+        #login-log img{
+            width:150px;
+            height:100px;
+            margin-top:30px;
+            margin-left:125px;
+            cursor:pointer;
+        }
+        .login-mes{
+            margin-top:20px;
+            margin-left:100px;
+        }
+        #login-close{
+            margin-left:380px;
+            margin-top:5px;
+        }
+        #close img{
+            width:14px;
+            height:14px;
+        }
+        .btn{
+            float:left;
+        }
+                .btn {
+            background: url("../images/login_btn.png") no-repeat -111px 0;
+            width: 111px;
+            height: 36px;
+            border: 0;
+            text-align: center;
+            line-height: 20px;
+            color: #0C4E7C;
+            cursor: pointer;
+            margin-left: 14px;
+        }
+
+
+        .login-state-trigger {
+            cursor: pointer;
+            display: block;
+            float: left;
+            height: 16px;
+            overflow: hidden;
+            width: 120px;
+            margin: 4px 0 0 0;
+        }
+
+        .login-state-trigger2 {
+            margin: 10px 0 0 20px;
+        }
+
+        .login-state-down {
+            background: url("../images/ptlogin.png") no-repeat scroll 0 -22px transparent;
+            float: left;
+            height: 6px;
+            margin-top: 5px;
+            overflow: hidden;
+            text-indent: -999em;
+            width: 7px;
+        }
+
+        .login-state-show {
+            float: left;
+            height: 14px;
+            overflow: hidden;
+            text-indent: -999em;
+            width: 14px;
+            margin: 1px 4px 0 0;
+        }
+
+        .login-state-txt {
+            float: left;
+            margin-left: 5px;
+            font-size: 12px;
+            >line-height:18px!important;
+        }
+
+        .login-state .callme {
+            background: url("../images/ptlogin.png") -72px 0 no-repeat;
+        }
+
+        .login-state .online {
+            background: url("../images/ptlogin.png") 0 0 no-repeat;
+        }
+
+        .login-state .away {
+            background: url("../images/ptlogin.png") -18px 0 no-repeat;
+        }
+
+        .login-state .busy {
+            background: url("../images/ptlogin.png") -36px 0 no-repeat;
+        }
+
+        .login-state .silent {
+            background: url("../images/ptlogin.png") -108px 0 no-repeat;
+        }
+
+        .login-state .hidden {
+            background: url("../images/ptlogin.png") -54px 0 no-repeat;
+        }
+
+        .statePanel {
+            display: none;
+            position: absolute;
+            right: 68px;
+            top: 193px;
+            z-index: 10;
+            margin: 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #ccc #6a6a6a #666 #cdcdcd;
+            padding: 0;
+            width: 100px;
+            height: 133px;
+            overflow: hidden;
+            background: white;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+            .statePanel .statePanel_li {
+                display: block;
+                float: left;
+                margin: 0;
+                padding: 3px 0;
+                width: 100px;
+                height: 16px;
+                line-height: 16px;
+                overflow: hidden;
+                zoom: 1;
+                cursor: pointer;
+            }
+
+        .stateSelect_icon {
+            float: left;
+            margin: 2px 0 0 5px;
+            width: 14px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .stateSelect_text {
+            margin: 0 0 0 22px;
+        }
+
+        .bottomDiv {
+            margin-left: 70px;
+        }
+    </style>
+    <script src="drag.js"></script>
+</body>
+</html>
